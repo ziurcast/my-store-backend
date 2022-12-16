@@ -11,20 +11,7 @@ const port = 3000;
 
 app.use(express.json());
 
-const whiteList = [
-  'https://localhost:8080',
-  'https://my-store-backend-production.up.railway.app/',
-];
-const options = {
-  origin: (origin, callback) => {
-    if (whiteList.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not Allowed'));
-    }
-  },
-};
-app.use(cors(options));
+app.use(cors());
 
 routerApi(app);
 
